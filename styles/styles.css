@@ -1,59 +1,57 @@
 body{
-    margin: 0;
-    overflow: hidden;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    background: lightgoldenrodyellow url("vecherniy-tramvay.jpg");
+    font-family:    "Open Sans", sans-serif;
+    margin:         0;
+    width:          100vw;
+    height:         100vh;
+    background:   lightgoldenrodyellow url("Mass.jpg");
 }
 
 .container{
-    display: flex;
-    margin: auto;
-    width: 900px;
-    height: 100%;
-    background-color: rgba(255,220,128,0.72);
-    overflow: hidden;
-
+    position:           relative;
+    top:                50%;
+    display:            flex;
+    margin:             auto;
+    max-width:          65%;
+    transform:          translate(0,-50%);
+    background-color: rgba(128,128,128,0.8);
+    padding:            0;
 }
 
 .input, .output{
-    position: relative;
-    padding: 20px;
-    text-align: center;
-    align-content: center;
-    width: 50%;
-    magrin: 10px;
+
+    position:       relative;
+    float:          left;
+    display:        block;
+    padding-top:    20px;
+    position:       relative;
+    margin:         0;
+    text-align:     center;
+    width:          50%;
+    overflow:       hidden;
+    min-height:     auto;
 }
 
+
 .output div{
-    font-family: "Open Sans", sans-serif;
-    font-family: "Open Sans", sans-serif;
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0 auto 10px auto;
-    line-height: 3em;
-    width: 80%;
-    height: 3em;
+    margin:             0 auto 10px auto;
+    line-height:        3em;
+    width:              90%;
     background-color: wheat;
-    text-align: center;
-    overflow: auto;
+    text-align:         center;
+    overflow:           auto;
 }
 
 .textBox{
-    display: block;
-    background-color: white;
-    color: black;
-    resize: none;
-    height: 69%;
-    width: 80%;
-    outline: none;
-    margin: 10% auto auto;
-    padding: 10px 30px 20px 20px;
-    font-family: 'Proxima Nova Regular',"Times New Roman",sans-serif;
-    font-size: 14px;
-    line-height: 18px;
+
+    color:        black;
+    resize:         none;
+    height:         623px;
+    width:          340px;
+    outline:        none;
+    margin:         auto;
+    font-family:    'Proxima Nova Regular',"Times New Roman",sans-serif;
+    font-size:      14px;
+    line-height:    18px;
 
 }
 .textBox::-webkit-scrollbar{
@@ -61,13 +59,37 @@ body{
 }
 
 .buttonConvert{
-    font-family: "Open Sans","Times New Roman",sans-serif;
-    font-size: 1em;
-    position: relative;
-    height: 5%;
-    width: 50%;
-    margin-top: 10px;
-    outline: none;
+    font-size:      1em;
+    height:         30px;
+    width:          50%;
+    margin:         10px;
+    transition:     background-color 0.3s;
+    outline:        none;
+    border:         none;
+}
+
+.timer{
+    font-family:    "Open Sans", sans-serif;
+    overflow:       hidden;
+    top:            345px;
+    height:         100px;
+}
+.timer span{
+    display:    block;
+}
+.timer button{
+    background-color: rgb(243, 243, 243);
+    width:              100%;
+    margin:             0;
+    height:             52%;
+}
+.Counter{
+    font-size:          20px;
+    font-weight:        bold;
+    outline:            none;
+    border:             none;
+    text-align:         center;
+    background-color:   inherit;
 }
 
 @font-face {
@@ -81,10 +103,15 @@ body{
 }
 
 .buttonConvert, .output div{
-    background-color: #fcaf45;
-    border: none;
+    background-color: lightgray;
+}
+.buttonConvert:hover{
+    box-shadow:         2px 2px 2px 0px black;
+    transform:          box-shadow ease 0.5s;
+    background-color: rgba(128,128,128);
 }
 .buttonConvert:active{
-    background-color: #405de6;
+    box-shadow:         none;
+    background-color: white;
 }
 
