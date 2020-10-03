@@ -15,9 +15,9 @@
             let rawTime = timerValue.value.toString();
             debugger;
             rawTime = rawTime.split(":");
-            let hours = Number.parseInt(rawTime[0]);
-            let minutes = Number.parseInt(rawTime[1]);
-            let seconds = Number.parseInt(rawTime[2]);
+            let hours = Number.parseInt(rawTime[0]) | 0;
+            let minutes = Number.parseInt(rawTime[1]) | 0;
+            let seconds = Number.parseInt(rawTime[2]) | 0;
             countdownTime(hours,minutes,seconds);
             
         }
@@ -32,22 +32,22 @@
         formatTime(minutes) + ":" +
         formatTime(seconds);
         timerOutput.innerText = stringTime;
-        
+        debugger;
         intervalID = setInterval(()=>{
             seconds--;
-            if(seconds==0){
-                if(minutes==0&&hours==0){
+            if(seconds<=0){
+                if(minutes===0&&hours===0){
                     timerStop();
                     alert("Timer Out!");
                 }
-                minutes--;
-                seconds=60;
                 debugger;
-                if(minutes==0){
+                if(minutes===0){
                     hours--;
                     minutes=60;
                 }
-                
+                minutes--;
+                seconds=59;
+
             }
             
             stringTime = formatTime(hours) + ":"+

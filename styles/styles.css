@@ -108,7 +108,7 @@ body{
 .buttonConvert:hover{
     box-shadow:         2px 2px 2px 0px black;
     transform:          box-shadow ease 0.5s;
-    background-color: rgba(128,128,128);
+    background-color: rgba(128,128,128,1);
 }
 .buttonConvert:active{
     box-shadow:         none;
