@@ -1,0 +1,90 @@
+body{
+    margin: 0;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: lightgoldenrodyellow url("vecherniy-tramvay.jpg");
+}
+
+.container{
+    display: flex;
+    margin: auto;
+    width: 900px;
+    height: 100%;
+    background-color: rgba(255,220,128,0.72);
+    overflow: hidden;
+
+}
+
+.input, .output{
+    position: relative;
+    padding: 20px;
+    text-align: center;
+    align-content: center;
+    width: 50%;
+    magrin: 10px;
+}
+
+.output div{
+    font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans", sans-serif;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 auto 10px auto;
+    line-height: 3em;
+    width: 80%;
+    height: 3em;
+    background-color: wheat;
+    text-align: center;
+    overflow: auto;
+}
+
+.textBox{
+    display: block;
+    background-color: white;
+    color: black;
+    resize: none;
+    height: 69%;
+    width: 80%;
+    outline: none;
+    margin: 10% auto auto;
+    padding: 10px 30px 20px 20px;
+    font-family: 'Proxima Nova Regular',"Times New Roman",sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+
+}
+.textBox::-webkit-scrollbar{
+    display: none;
+}
+
+.buttonConvert{
+    font-family: "Open Sans","Times New Roman",sans-serif;
+    font-size: 1em;
+    position: relative;
+    height: 5%;
+    width: 50%;
+    margin-top: 10px;
+    outline: none;
+}
+
+@font-face {
+    font-family: 'Proxima Nova Regular';
+    src: url('ProximaNova-Regular.eot');
+    src: url('ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),
+    url('ProximaNova-Regular.woff') format('woff'),
+    url('ProximaNova-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.buttonConvert, .output div{
+    background-color: #fcaf45;
+    border: none;
+}
+.buttonConvert:active{
+    background-color: #405de6;
+}
+
