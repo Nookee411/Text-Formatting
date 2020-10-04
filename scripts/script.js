@@ -1,75 +1,86 @@
     let button = document.getElementById("convert");
-    let timerStart = document.getElementById("button timer");
-    let timerValue = document.getElementById("timerCounter");
-    let timerOutput = document.getElementById("timerOutput");
-    let isTimerGoes = false;
     let intervalID;
-    timerOutput.style.display ="none";
-    timerValue.defaultValue = "00:30:03";
-    timerStart.addEventListener("click",()=>{
-        if(!isTimerGoes){
-            isTimerGoes = true;
-            timerValue.style.display ="none";
-            timerOutput.style.display ="block";
-            timerStart.innerText = "Стоп";
-            let rawTime = timerValue.value.toString();
-            debugger;
+
+    //TODO add saving to file
+    class Timer{
+        #isTimerGoes;
+        constructor(buttonStart,timerInput,timerOutput) {
+            this.timerStart = document.getElementById(buttonStart);
+            this.timerValue = document.getElementById(timerInput);
+            this.timerOutput = document.getElementById(timerOutput);
+            this.timerOutput.style.display ="none";
+            this.timerValue.defaultValue = "00:30:03";
+            this.#isTimerGoes = false;
+            this.timerStart.addEventListener("click",()=>{
+                if(!this.#isTimerGoes){
+                    this.start()
+                }
+                else{
+                    this.stop();
+                }
+            });
+
+        }
+        #formatTime(time){
+            if(Math.abs(time)<10)
+                return "0"+time;
+            return time;
+        }
+
+
+
+        start(){
+            this.#isTimerGoes = true;
+            this.timerValue.style.display ="none";
+            this.timerOutput.style.display ="block";
+            this.timerStart.innerText = "Стоп";
+            let rawTime = this.timerValue.value.toString();
             rawTime = rawTime.split(":");
             let hours = Number.parseInt(rawTime[0]) | 0;
             let minutes = Number.parseInt(rawTime[1]) | 0;
             let seconds = Number.parseInt(rawTime[2]) | 0;
-            countdownTime(hours,minutes,seconds);
-            
+            this.#tick(hours,minutes,seconds);
         }
-        else{
-            timerStop();
-        }
-    });
-
-    function countdownTime(hours,minutes,seconds){
-        
-        let stringTime = formatTime(hours) + ":"+
-        formatTime(minutes) + ":" +
-        formatTime(seconds);
-        timerOutput.innerText = stringTime;
-        debugger;
-        intervalID = setInterval(()=>{
-            seconds--;
-            if(seconds<=0){
-                if(minutes===0&&hours===0){
-                    timerStop();
-                    alert("Timer Out!");
-                }
-                debugger;
-                if(minutes===0){
-                    hours--;
-                    minutes=60;
-                }
-                minutes--;
-                seconds=59;
-
-            }
-            
-            stringTime = formatTime(hours) + ":"+
-            formatTime(minutes) + ":" +
-            formatTime(seconds);
-            timerOutput.innerText = stringTime;
-        },1000);
-    }
-
-    function formatTime(time){
-        if(Math.abs(time)<10)
-        return "0"+time;
-        return time;
-    }
-    function timerStop(){
-            isTimerGoes = false;
-            timerValue.style.display ="inline";
-            timerOutput.style.display ="none";
-            timerStart.innerText = "Старт";
+        stop(){
+            this.#isTimerGoes = false;
+            this.timerValue.style.display ="inline";
+            this.timerOutput.style.display ="none";
+            this.timerStart.innerText = "Старт";
             clearInterval(intervalID);
+        }
+        #tick(hours,minutes,seconds){
+            let stringTime =  this.#formatTime(hours) + ":"+
+                this.#formatTime(minutes) + ":" +
+                this.#formatTime(seconds);
+            this.timerOutput.innerText = stringTime;
+            debugger;
+            intervalID = setInterval(()=>{
+                seconds--;
+                if(seconds<=0){
+                    if(minutes===0&&hours===0){
+                        this.stop();
+                        alert("Timer Out!");
+                    }
+                    debugger;
+                    if(minutes===0){
+                        hours--;
+                        minutes=60;
+                    }
+                    minutes--;
+                    seconds=59;
+
+                }
+
+                stringTime = this.#formatTime(hours) + ":"+
+                    this.#formatTime(minutes) + ":" +
+                    this.#formatTime(seconds);
+                this.timerOutput.innerText = stringTime;
+            },1000);
+        }
     }
-    
+
+    let timer = new Timer("button timer","timerCounter","timerOutput");
+
     button.addEventListener("click",()=>{
         let textBox = document.getElementById("textArea");
         let text =textBox.value;
@@ -93,14 +104,14 @@
         let textBox = document.getElementById("textArea");
         let text =textBox.value;
         document.getElementById("totalSymbols").innerText = text.length;
-        document.getElementById("totalClearSymbols").innerText = countSymbols(text);
+        document.getElementById("totalClearSymbols").innerText = countSymbols(text).toString();
     }
 
     function getSelectionText() {
         let text = "";
         if (window.getSelection) {
             text = window.getSelection().toString();
-        } else if (document.selection && document.selection.type != "Control") {
+        } else if (document.selection && document.selection.type !== "Control") {
             text = document.selection.createRange().text;
         }
         return text;
@@ -110,9 +121,9 @@
         let selectedSymbols = document.getElementById("selectedSymbols");
         let text = getSelectionText();
         if(text)
-            selectedSymbols.innerText = text.length; 
+            selectedSymbols.innerText = text.length.toString();
         else
-            selectedSymbols.innerText = countSymbols(text);
+            selectedSymbols.innerText = countSymbols(text).toString();
     }
 
 
@@ -125,12 +136,7 @@
         updateSymbols();
     })
 
-    textArea.addEventListener("mouseup",()=>{
-        handleSelection();
+    document.addEventListener("selectionchange",()=>{
+        if(textArea ===document.activeElement)
+            handleSelection();
     });
-
-    textArea.addEventListener("keyup",()=>{
-        handleSelection();
-    });
-
-   
