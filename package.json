@@ -1,0 +1,20 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "Text Formatter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nookee411/Text-Formatting.git"
+  },
+  "keywords": [],
+  "author": "Nookee411",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nookee411/Text-Formatting/issues"
+  },
+  "homepage": "https://github.com/Nookee411/Text-Formatting#readme"
+}

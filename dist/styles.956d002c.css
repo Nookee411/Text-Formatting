@@ -1,0 +1,120 @@
+body{
+    font-family:    "Open Sans", sans-serif;
+    margin:         0;
+    width:          100vw;
+    height:         100vh;
+    background:   lightgoldenrodyellow url("/Mass.2c57f4bf.jpg");
+}
+
+.container{
+    position:           relative;
+    top:                50%;
+    display:            flex;
+    margin:             auto;
+    max-width:          65%;
+    transform:          translate(0,-50%);
+    background-color: rgba(128,128,128,0.8);
+    padding:            0;
+}
+
+.input, .output{
+
+    position:       relative;
+    float:          left;
+    display:        block;
+    padding-top:    20px;
+    position:       relative;
+    margin:         0;
+    text-align:     center;
+    width:          50%;
+    overflow:       hidden;
+    min-height:     auto;
+}
+
+
+.output div{
+    margin:             0 auto 10px auto;
+    line-height:        3em;
+    width:              90%;
+    background-color: wheat;
+    text-align:         center;
+    overflow:           auto;
+}
+
+.textBox{
+
+    color:        black;
+    resize:         none;
+    height:         623px;
+    width:          340px;
+    outline:        none;
+    margin:         auto;
+    font-family:    'Proxima Nova Regular',"Times New Roman",sans-serif;
+    font-size:      14px;
+    line-height:    18px;
+
+}
+.textBox::-webkit-scrollbar{
+    display: none;
+}
+
+.buttonConvert{
+    font-size:      1em;
+    height:         30px;
+    width:          50%;
+    margin:         10px;
+    transition:     background-color 0.3s;
+    outline:        none;
+    border:         none;
+}
+
+.timer{
+    font-family:    "Open Sans", sans-serif;
+    overflow:       hidden;
+    top:            345px;
+    height:         100px;
+}
+.timer span{
+    display:    block;
+}
+.timer button{
+    background-color: rgb(243, 243, 243);
+    width:              100%;
+    margin:             0;
+    height:             52%;
+}
+.Counter{
+    font-size:          20px;
+    font-weight:        bold;
+    outline:            none;
+    border:             none;
+    text-align:         center;
+    background-color:   inherit;
+}
+
+@font-face {
+    font-family: 'Proxima Nova Regular';
+    src: url('/ProximaNova-Regular.c1850494.eot');
+    src: url('/ProximaNova-Regular.c1850494.eot?#iefix') format('embedded-opentype'),
+    url('/ProximaNova-Regular.f9e075f8.woff') format('woff'),
+    url('/ProximaNova-Regular.bccef669.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.buttonConvert, .output div{
+    background-color: lightgray;
+}
+.buttonConvert:hover{
+    box-shadow:         2px 2px 2px 0px black;
+    transform:          box-shadow ease 0.5s;
+    background-color: rgba(128,128,128,1);
+}
+.buttonConvert:active{
+    box-shadow:         none;
+    background-color: white;
+}
+
+
+
+/*# sourceMappingURL=/styles.956d002c.css.map */

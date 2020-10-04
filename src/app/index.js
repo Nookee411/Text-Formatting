@@ -2,6 +2,8 @@
     let intervalID;
 
     //TODO add saving to file
+
+
     class Timer{
         #isTimerGoes;
         constructor(buttonStart,timerInput,timerOutput) {
@@ -21,7 +23,7 @@
             });
 
         }
-        #formatTime(time){
+        static #formatTime(time){
             if(Math.abs(time)<10)
                 return "0"+time;
             return time;
@@ -36,9 +38,9 @@
             this.timerStart.innerText = "Стоп";
             let rawTime = this.timerValue.value.toString();
             rawTime = rawTime.split(":");
-            let hours = Number.parseInt(rawTime[0]) | 0;
-            let minutes = Number.parseInt(rawTime[1]) | 0;
-            let seconds = Number.parseInt(rawTime[2]) | 0;
+            let hours = +rawTime[0] | 0;
+            let minutes = +rawTime[1] | 0;
+            let seconds = +rawTime[2] | 0;
             this.#tick(hours,minutes,seconds);
         }
         stop(){
@@ -49,9 +51,9 @@
             clearInterval(intervalID);
         }
         #tick(hours,minutes,seconds){
-            let stringTime =  this.#formatTime(hours) + ":"+
-                this.#formatTime(minutes) + ":" +
-                this.#formatTime(seconds);
+            let stringTime =  Timer.#formatTime(hours) + ":"+
+                Timer.#formatTime(minutes) + ":" +
+                Timer.#formatTime(seconds);
             this.timerOutput.innerText = stringTime;
             debugger;
             intervalID = setInterval(()=>{
@@ -71,9 +73,9 @@
 
                 }
 
-                stringTime = this.#formatTime(hours) + ":"+
-                    this.#formatTime(minutes) + ":" +
-                    this.#formatTime(seconds);
+                stringTime = Timer.formatTime(hours) + ":"+
+                    Timer.formatTime(minutes) + ":" +
+                    Timer.formatTime(seconds);
                 this.timerOutput.innerText = stringTime;
             },1000);
         }
