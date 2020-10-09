@@ -141,6 +141,17 @@ function _classPrivateFieldSet(receiver, privateMap, value) { var descriptor = p
 var button = document.getElementById("convert");
 var intervalID; //TODO add saving to file
 
+var switchButton = document.getElementById("switchCase");
+switchButton.addEventListener("click", function () {
+  if (textArea.style.backgroundColor === "rgb(51, 51, 51)") {
+    textArea.style.backgroundColor = "#fff";
+    textArea.style.color = "#333";
+  } else {
+    textArea.style.backgroundColor = "#333";
+    textArea.style.color = "#fff";
+  }
+});
+
 var _isTimerGoes = new WeakMap();
 
 var _tick = new WeakSet();
@@ -239,7 +250,7 @@ var _tick2 = function _tick2(hours, minutes, seconds) {
       seconds = 59;
     }
 
-    stringTime = Timer.formatTime(hours) + ":" + Timer.formatTime(minutes) + ":" + Timer.formatTime(seconds);
+    stringTime = _classStaticPrivateMethodGet(Timer, Timer, _formatTime).call(Timer, hours) + ":" + _classStaticPrivateMethodGet(Timer, Timer, _formatTime).call(Timer, minutes) + ":" + _classStaticPrivateMethodGet(Timer, Timer, _formatTime).call(Timer, seconds);
     _this2.timerOutput.innerText = stringTime;
   }, 1000);
 };
@@ -339,7 +350,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61612" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54159" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

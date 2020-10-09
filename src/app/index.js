@@ -1,8 +1,18 @@
     let button = document.getElementById("convert");
     let intervalID;
-
     //TODO add saving to file
+    let switchButton = document.getElementById("switchCase");
 
+    switchButton.addEventListener("click",()=>{
+        if(textArea.style.backgroundColor === "rgb(51, 51, 51)") {
+            textArea.style.backgroundColor = "#fff";
+            textArea.style.color = "#333";
+        }
+        else{
+            textArea.style.backgroundColor = "#333";
+            textArea.style.color = "#fff";
+        }
+    });
 
     class Timer{
         #isTimerGoes;
@@ -73,9 +83,9 @@
 
                 }
 
-                stringTime = Timer.formatTime(hours) + ":"+
-                    Timer.formatTime(minutes) + ":" +
-                    Timer.formatTime(seconds);
+                stringTime = Timer.#formatTime(hours) + ":"+
+                    Timer.#formatTime(minutes) + ":" +
+                    Timer.#formatTime(seconds);
                 this.timerOutput.innerText = stringTime;
             },1000);
         }

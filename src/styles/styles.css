@@ -108,7 +108,9 @@ body{
     text-align:         center;
     background-color:   inherit;
 }
-
+#timerOutput{
+    display : none;
+}
 @font-face {
     font-family: 'Proxima Nova Regular';
     src: url('ProximaNova-Regular.eot');
@@ -129,5 +131,24 @@ body{
 .buttonConvert:active{
     box-shadow:         none;
     background-color: white;
+}
+
+.switch{
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 2rem;
+    height: 2rem;
+    justify-content: center;
+    align-items: center;
+    transition-duration: .5s;
+    background-color: #fff;
+    color: #333;
+}
+
+.switch:hover{
+    background-color: #333;
+    color: #fff;
 }
 
