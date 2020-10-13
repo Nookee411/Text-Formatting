@@ -1,7 +1,7 @@
 body{
     font-family:    "Open Sans", sans-serif;
     margin:         0;
-    background: #333333 url("Mass.jpg");
+    background: #333333 url("/Mass.9818b56d.jpg");
     height: 100vh;
     justify-items: center;
 }
@@ -119,10 +119,10 @@ body{
 }
 @font-face {
     font-family: 'Proxima Nova Regular';
-    src: url('ProximaNova-Regular.eot');
-    src: url('ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),
-    url('ProximaNova-Regular.woff') format('woff'),
-    url('ProximaNova-Regular.ttf') format('truetype');
+    src: url('/ProximaNova-Regular.3cdb266e.eot');
+    src: url('/ProximaNova-Regular.3cdb266e.eot?#iefix') format('embedded-opentype'),
+    url('/ProximaNova-Regular.6a83558f.woff') format('woff'),
+    url('/ProximaNova-Regular.995f008d.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -158,3 +158,6 @@ body{
     color: #fff;
 }
 
+
+
+/*# sourceMappingURL=/styles.f43277d9.css.map */

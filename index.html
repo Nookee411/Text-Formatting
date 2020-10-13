@@ -6,12 +6,13 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Text convertor</title>
+    <link rel="stylesheet" href="src/styles/styles.css">
 </head>
 <body>
-<link rel="stylesheet" href="src/styles/styles.css">
+    <div class="wrapper">
     <div class="container">
         <div class = "input">
-        <textarea id = "textArea"class="textBox"></textarea>
+        <textarea class="textBox" id = "textArea"></textarea>
         <button id = "convert" class = "buttonConvert">Convert</button>
         </div>
         <div class = "output">
@@ -25,6 +26,7 @@
             <button id = "button timer" class = "buttonConvert">Старт</button>
         </div>
         </div>
+    </div>
     </div>
 <a class = "switch" id="switchCase">?</a>
     <script src="src/app/index.js"></script>
