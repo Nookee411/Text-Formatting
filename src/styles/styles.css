@@ -1,160 +1,134 @@
-body{
-    font-family:    "Open Sans", sans-serif;
-    margin:         0;
-    background: #333333 url("Mass.jpg");
-    height: 100vh;
-    justify-items: center;
-}
-.wrapper{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
 }
 
-.container{
-    position:           absolute;
-    top:                10%;
-    display:            flex;
-    flex-wrap:          wrap;
-    margin:             auto;
-    max-width:          65%;
-    min-width:          350px;
-    background-color: rgba(128,128,128,0.8);
-    padding:            10px;
-}
-
-.input, .output{
-    position:       relative;
-    float:          left;
-    display:        block;
-    padding-top:    20px;
-    margin:         0;
-    text-align:     center;
-    flex:1;
-    overflow:       hidden;
-    min-height:     auto;
-}
-.output{
-    display:        flex;
-    flex-direction: column;
-    min-width: 300px;
-}
-.input{
-    min-width: 350px;
-}
-
-.output div{
-    margin:             0 auto 10px auto;
-    line-height:        3em;
-    min-width:              90%;
-    background-color: wheat;
-    text-align:         center;
-    overflow:           auto;
-}
-
-.textBox{
-
-    color:        black;
-    resize:         none;
-    height:         623px;
-    width:          340px;
-    outline:        none;
-    margin:         auto;
-    font-family:    'Proxima Nova Regular',"Times New Roman",sans-serif;
-    font-size:      14px;
-    line-height:    18px;
-
-}
-.textBox::-webkit-scrollbar{
-    display: none;
-    width: 10px;
-}
-
-@media (max-width: 1000px) {
-    body{
-        overflow-x: hidden;
-    }
-    .container{
-        top: 0;
-    }
-
-}
-
-.buttonConvert{
-    font-size:      1em;
-    height:         30px;
-    width:          340px;
-    transition:     background-color 0.3s;
-    outline:        none;
-    border:         none;
-}
-
-.timer{
-    font-family:    "Open Sans", sans-serif;
-    overflow:       hidden;
-    top:            345px;
-    height:         100px;
-}
-.timer span{
-    display:    block;
-}
-.timer button{
-    background-color: rgb(243, 243, 243);
-    width:              100%;
-    margin:             0;
-    height:             52%;
-}
-.Counter{
-    font-size:          20px;
-    font-weight:        bold;
-    outline:            none;
-    border:             none;
-    text-align:         center;
-    background-color:   inherit;
-}
-#timerOutput{
-    display : none;
-}
 @font-face {
-    font-family: 'Proxima Nova Regular';
-    src: url('ProximaNova-Regular.eot');
-    src: url('ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),
+  font-family: 'Proxima Nova Regular';
+  src: url('ProximaNova-Regular.eot');
+  src: url('ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),
     url('ProximaNova-Regular.woff') format('woff'),
     url('ProximaNova-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-weight: normal;
+  font-style: normal;
 }
 
-.buttonConvert, .output div{
-    background-color: lightgray;
-}
-.buttonConvert:hover{
-    box-shadow:         2px 2px 2px 0 black;
-    background-color: rgba(128,128,128,1);
-}
-.buttonConvert:active{
-    box-shadow:         none;
-    background-color: white;
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  justify-items: center;
+  min-height: 100vh;
+  background: rgb(85, 70, 250);
+  background: linear-gradient(
+    150deg,
+    rgba(85, 70, 250, 1) 0%,
+    rgba(175, 85, 119, 1) 47%,
+    rgba(255, 99, 2, 1) 100%
+  );
 }
 
-.switch{
-    display: flex;
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    width: 2rem;
-    height: 2rem;
-    justify-content: center;
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 3em;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+  .container {
+    gap: 0;
+    flex-direction: column;
     align-items: center;
-    transition-duration: .5s;
-    background-color: #fff;
-    color: #333;
+  }
 }
 
-.switch:hover{
-    background-color: #333;
-    color: #fff;
+.input,
+.output {
+  margin: 1em 0;
+  min-width: 340px;
+  max-width: 340px;
+}
+.output {
+  position: relative;
+  background-color: hsla(0, 0%, 0%, 0.1);
+  border: 1px solid hsla(0, 0%, 0%, 0.3);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
 }
 
+.output div {
+  text-align: center;
+  padding: 1.4em;
+}
+
+.textBox {
+  background-color: #202124;
+  padding: 0.5em;
+  font-family: 'Proxima Nova Regular', 'Times New Roman', sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+  color: #e8eaed;
+  border-radius: 12px;
+  height: 620px;
+  min-width: 100%;
+  outline: none;
+  border: none;
+}
+.textBox::-webkit-scrollbar {
+  display: none;
+  width: 10px;
+}
+
+.buttonConvert {
+  font-size: 1em;
+  font-weight: bold;
+  width: 100%;
+  padding: 1em;
+  transition: background-color 0.3s;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+}
+
+.buttonConvert:hover {
+  background-color: hsla(0, 0%, 75%);
+}
+.buttonConvert:active {
+  box-shadow: none;
+  background-color: white;
+}
+
+.Counter {
+  font-size: 20px;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  text-align: center;
+  background-color: inherit;
+}
+#timerOutput {
+  display: none;
+}
+.switch {
+  position: fixed;
+  bottom: 1%;
+  right: 1%;
+  width: 2.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  text-align: center;
+  border-radius: 50%;
+  transition-duration: 0.5s;
+  background-color: #fff;
+  color: #333;
+  user-select: none;
+}
+
+.switch:hover {
+  background-color: #333;
+  color: #fff;
+}
