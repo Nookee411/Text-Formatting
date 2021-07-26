@@ -117,8 +117,8 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"app/index.js":[function(require,module,exports) {
-function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+})({"src/app/index.js":[function(require,module,exports) {
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
@@ -130,34 +130,41 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-function _classStaticPrivateMethodGet(receiver, classConstructor, method) { if (receiver !== classConstructor) { throw new TypeError("Private static access of wrong provenance"); } return method; }
+function _classStaticPrivateMethodGet(receiver, classConstructor, method) { _classCheckPrivateStaticAccess(receiver, classConstructor); return method; }
+
+function _classCheckPrivateStaticAccess(receiver, classConstructor) { if (receiver !== classConstructor) { throw new TypeError("Private static access of wrong provenance"); } }
 
 function _classPrivateMethodGet(receiver, privateSet, fn) { if (!privateSet.has(receiver)) { throw new TypeError("attempted to get private field on non-instance"); } return fn; }
 
-function _classPrivateFieldGet(receiver, privateMap) { var descriptor = privateMap.get(receiver); if (!descriptor) { throw new TypeError("attempted to get private field on non-instance"); } if (descriptor.get) { return descriptor.get.call(receiver); } return descriptor.value; }
+function _classPrivateFieldGet(receiver, privateMap) { var descriptor = _classExtractFieldDescriptor(receiver, privateMap, "get"); return _classApplyDescriptorGet(receiver, descriptor); }
 
-function _classPrivateFieldSet(receiver, privateMap, value) { var descriptor = privateMap.get(receiver); if (!descriptor) { throw new TypeError("attempted to set private field on non-instance"); } if (descriptor.set) { descriptor.set.call(receiver, value); } else { if (!descriptor.writable) { throw new TypeError("attempted to set read only private field"); } descriptor.value = value; } return value; }
+function _classApplyDescriptorGet(receiver, descriptor) { if (descriptor.get) { return descriptor.get.call(receiver); } return descriptor.value; }
 
-var button = document.getElementById("convert");
-var intervalID; //TODO add saving to file
+function _classPrivateFieldSet(receiver, privateMap, value) { var descriptor = _classExtractFieldDescriptor(receiver, privateMap, "set"); _classApplyDescriptorSet(receiver, descriptor, value); return value; }
 
-var switchButton = document.getElementById("switchCase");
-switchButton.addEventListener("click", function () {
-  if (textArea.style.backgroundColor === "rgb(51, 51, 51)") {
-    textArea.style.backgroundColor = "#fff";
-    textArea.style.color = "#333";
+function _classExtractFieldDescriptor(receiver, privateMap, action) { if (!privateMap.has(receiver)) { throw new TypeError("attempted to " + action + " private field on non-instance"); } return privateMap.get(receiver); }
+
+function _classApplyDescriptorSet(receiver, descriptor, value) { if (descriptor.set) { descriptor.set.call(receiver, value); } else { if (!descriptor.writable) { throw new TypeError("attempted to set read only private field"); } descriptor.value = value; } }
+
+var button = document.getElementById('convert');
+var intervalID;
+var switchButton = document.getElementById('switchCase');
+switchButton.addEventListener('click', function () {
+  if (textArea.style.backgroundColor === 'rgb(51, 51, 51)') {
+    textArea.style.backgroundColor = '#fff';
+    textArea.style.color = '#333';
   } else {
-    textArea.style.backgroundColor = "#333";
-    textArea.style.color = "#fff";
+    textArea.style.backgroundColor = '#333';
+    textArea.style.color = '#fff';
   }
 });
 
-var _isTimerGoes = new WeakMap();
+var _isTimerGoes = /*#__PURE__*/new WeakMap();
 
-var _tick = new WeakSet();
+var _tick = /*#__PURE__*/new WeakSet();
 
 var Timer = /*#__PURE__*/function () {
-  function Timer(buttonStart, timerInput, timerOutput) {
+  function Timer(buttonStart, timerInput) {
     var _this = this;
 
     _classCallCheck(this, Timer);
@@ -171,13 +178,11 @@ var Timer = /*#__PURE__*/function () {
 
     this.timerStart = document.getElementById(buttonStart);
     this.timerValue = document.getElementById(timerInput);
-    this.timerOutput = document.getElementById(timerOutput);
-    this.timerOutput.style.display = "none";
-    this.timerValue.defaultValue = "00:30:03";
+    this.timerValue.defaultValue = '00:30:00';
 
     _classPrivateFieldSet(this, _isTimerGoes, false);
 
-    this.timerStart.addEventListener("click", function () {
+    this.timerStart.addEventListener('click', function () {
       if (!_classPrivateFieldGet(_this, _isTimerGoes)) {
         _this.start();
       } else {
@@ -191,11 +196,9 @@ var Timer = /*#__PURE__*/function () {
     value: function start() {
       _classPrivateFieldSet(this, _isTimerGoes, true);
 
-      this.timerValue.style.display = "none";
-      this.timerOutput.style.display = "block";
-      this.timerStart.innerText = "Стоп";
+      this.timerStart.innerText = 'Стоп';
       var rawTime = this.timerValue.value.toString();
-      rawTime = rawTime.split(":");
+      rawTime = rawTime.split(':');
       var hours = +rawTime[0] | 0;
       var minutes = +rawTime[1] | 0;
       var seconds = +rawTime[2] | 0;
@@ -207,9 +210,7 @@ var Timer = /*#__PURE__*/function () {
     value: function stop() {
       _classPrivateFieldSet(this, _isTimerGoes, false);
 
-      this.timerValue.style.display = "inline";
-      this.timerOutput.style.display = "none";
-      this.timerStart.innerText = "Старт";
+      this.timerStart.innerText = 'Старт';
       clearInterval(intervalID);
     }
   }]);
@@ -217,18 +218,17 @@ var Timer = /*#__PURE__*/function () {
   return Timer;
 }();
 
-var _formatTime = function _formatTime(time) {
-  if (Math.abs(time) < 10) return "0" + time;
+function _formatTime(time) {
+  if (Math.abs(time) < 10) return '0' + time;
   return time;
-};
+}
 
-var _tick2 = function _tick2(hours, minutes, seconds) {
+function _tick2(hours, minutes, seconds) {
   var _this2 = this;
 
-  var stringTime = _classStaticPrivateMethodGet(Timer, Timer, _formatTime).call(Timer, hours) + ":" + _classStaticPrivateMethodGet(Timer, Timer, _formatTime).call(Timer, minutes) + ":" + _classStaticPrivateMethodGet(Timer, Timer, _formatTime).call(Timer, seconds);
+  var stringTime = _classStaticPrivateMethodGet(Timer, Timer, _formatTime).call(Timer, hours) + ':' + _classStaticPrivateMethodGet(Timer, Timer, _formatTime).call(Timer, minutes) + ':' + _classStaticPrivateMethodGet(Timer, Timer, _formatTime).call(Timer, seconds);
 
-  this.timerOutput.innerText = stringTime;
-  debugger;
+  this.timerValue.value = stringTime;
   intervalID = setInterval(function () {
     seconds--;
 
@@ -236,10 +236,8 @@ var _tick2 = function _tick2(hours, minutes, seconds) {
       if (minutes === 0 && hours === 0) {
         _this2.stop();
 
-        alert("Timer Out!");
+        alert('Timer Out!');
       }
-
-      debugger;
 
       if (minutes === 0) {
         hours--;
@@ -250,21 +248,17 @@ var _tick2 = function _tick2(hours, minutes, seconds) {
       seconds = 59;
     }
 
-    stringTime = _classStaticPrivateMethodGet(Timer, Timer, _formatTime).call(Timer, hours) + ":" + _classStaticPrivateMethodGet(Timer, Timer, _formatTime).call(Timer, minutes) + ":" + _classStaticPrivateMethodGet(Timer, Timer, _formatTime).call(Timer, seconds);
-    _this2.timerOutput.innerText = stringTime;
+    stringTime = _classStaticPrivateMethodGet(Timer, Timer, _formatTime).call(Timer, hours) + ':' + _classStaticPrivateMethodGet(Timer, Timer, _formatTime).call(Timer, minutes) + ':' + _classStaticPrivateMethodGet(Timer, Timer, _formatTime).call(Timer, seconds);
+    _this2.timerValue.value = stringTime;
   }, 1000);
-};
+}
 
-var timer = new Timer("button timer", "timerCounter", "timerOutput");
-button.addEventListener("click", function () {
-  var textBox = document.getElementById("textArea");
+var timer = new Timer('button timer', 'timerCounter', 'timerOutput');
+button.addEventListener('click', function () {
+  var textBox = document.getElementById('textArea');
   var text = textBox.value;
-  textBox.value = text.replaceAll(" \n", "\n");
+  textBox.value = text.replaceAll(' \n', '\n');
 });
-/***
- * @param {String} text
- * @return {Number}
- */
 
 function countSymbols(text) {
   var total = 0;
@@ -275,7 +269,7 @@ function countSymbols(text) {
   try {
     for (_iterator.s(); !(_step = _iterator.n()).done;) {
       var char = _step.value;
-      if (char !== " ") total++;
+      if (char !== ' ') total++;
     }
   } catch (err) {
     _iterator.e(err);
@@ -287,18 +281,18 @@ function countSymbols(text) {
 }
 
 function updateSymbols() {
-  var textBox = document.getElementById("textArea");
+  var textBox = document.getElementById('textArea');
   var text = textBox.value;
-  document.getElementById("totalSymbols").innerText = text.length;
-  document.getElementById("totalClearSymbols").innerText = countSymbols(text).toString();
+  document.getElementById('totalSymbols').innerText = text.length;
+  document.getElementById('totalClearSymbols').innerText = countSymbols(text);
 }
 
 function getSelectionText() {
-  var text = "";
+  var text = '';
 
   if (window.getSelection) {
     text = window.getSelection().toString();
-  } else if (document.selection && document.selection.type !== "Control") {
+  } else if (document.selection && document.selection.type !== 'Control') {
     text = document.selection.createRange().text;
   }
 
@@ -306,23 +300,23 @@ function getSelectionText() {
 }
 
 function handleSelection() {
-  var selectedSymbols = document.getElementById("selectedSymbols");
+  var selectedSymbols = document.getElementById('selectedSymbols');
   var text = getSelectionText();
-  if (text) selectedSymbols.innerText = text.length.toString();else selectedSymbols.innerText = countSymbols(text).toString();
+  if (text) selectedSymbols.innerText = text.length;else selectedSymbols.innerText = countSymbols(text);
 }
 
-function isLetter(c) {
-  return c.toLowerCase() !== c.toUpperCase();
-}
-
-var textArea = document.getElementById("textArea");
-textArea.addEventListener("input", function () {
+var textArea = document.getElementById('textArea');
+textArea.addEventListener('input', function () {
   updateSymbols();
 });
-document.addEventListener("selectionchange", function () {
+document.addEventListener('selectionchange', function () {
   if (textArea === document.activeElement) handleSelection();
 });
-},{}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+var isLetter = function isLetter(c) {
+  return c.toLowerCase() !== c.toUpperCase();
+};
+},{}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -350,7 +344,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51114" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53941" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -526,5 +520,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","app/index.js"], null)
+},{}]},{},["../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/app/index.js"], null)
 //# sourceMappingURL=/app.71b80e26.js.map

@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Nookee411/Text-Formatting/issues"
   },
-  "homepage": "https://github.com/Nookee411/Text-Formatting#readme"
+  "homepage": "https://github.com/Nookee411/Text-Formatting#readme",
+  "dependencies": {
+    "parcel-bundler": "^1.12.5"
+  }
 }
