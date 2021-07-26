@@ -1,7 +1,6 @@
 import localforage from 'localforage';
 
 window.onload = () => {
-  console.log(1);
   localforage
     .getItem('text', function (err, value) {})
     .then((res) => (textArea.value = res));
@@ -131,9 +130,7 @@ function handleSelection() {
 let textArea = document.getElementById('textArea');
 textArea.addEventListener('input', () => {
   updateSymbols();
-  localforage.setItem('text', textArea.value, (err, value) => {
-    console.log(value);
-  });
+  localforage.setItem('text', textArea.value, (err, value) => {});
 });
 
 document.addEventListener('selectionchange', () => {

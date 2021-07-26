@@ -2958,8 +2958,6 @@ function _classExtractFieldDescriptor(receiver, privateMap, action) { if (!priva
 function _classApplyDescriptorSet(receiver, descriptor, value) { if (descriptor.set) { descriptor.set.call(receiver, value); } else { if (!descriptor.writable) { throw new TypeError("attempted to set read only private field"); } descriptor.value = value; } }
 
 window.onload = function () {
-  console.log(1);
-
   _localforage.default.getItem('text', function (err, value) {}).then(function (res) {
     return textArea.value = res;
   });
@@ -3128,9 +3126,7 @@ var textArea = document.getElementById('textArea');
 textArea.addEventListener('input', function () {
   updateSymbols();
 
-  _localforage.default.setItem('text', textArea.value, function (err, value) {
-    console.log(value);
-  });
+  _localforage.default.setItem('text', textArea.value, function (err, value) {});
 });
 document.addEventListener('selectionchange', function () {
   if (textArea === document.activeElement) handleSelection();
@@ -3167,7 +3163,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49382" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57548" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
