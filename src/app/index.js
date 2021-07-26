@@ -1,9 +1,7 @@
-import localforage from 'localforage';
+const myStorage = window.localStorage;
 
 window.onload = () => {
-  localforage
-    .getItem('text', function (err, value) {})
-    .then((res) => (textArea.value = res));
+  textArea.value = myStorage.getItem('text');
 };
 let button = document.getElementById('convert');
 let intervalID;
@@ -130,7 +128,7 @@ function handleSelection() {
 let textArea = document.getElementById('textArea');
 textArea.addEventListener('input', () => {
   updateSymbols();
-  localforage.setItem('text', textArea.value, (err, value) => {});
+  myStorage.setItem('text', textArea.value);
 });
 
 document.addEventListener('selectionchange', () => {
